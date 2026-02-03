@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artikel Trainer</title>
+<style>
+body{font-family:-apple-system,system-ui;background:#f8fafc;margin:0;padding:20px}
+.card{background:#fff;border-radius:16px;padding:20px;box-shadow:0 4px 10px rgba(0,0,0,.05)}
+button{padding:14px;font-size:18px;border-radius:12px;border:none;margin:6px;width:30%}
+.der{background:#e0f2fe}
+.die{background:#fde2e2}
+.das{background:#ede9fe}
+</style>
+</head>
+<body>
+
+<h2>🇩🇪 Artikel Trainer</h2>
+
+<div class="card">
+  <div id="word" style="font-size:32px;font-weight:600">Tisch</div>
+  <p id="it">tavolo</p>
+
+  <div>
+    <button class="der" onclick="check('der')">der</button>
+    <button class="die" onclick="check('die')">die</button>
+    <button class="das" onclick="check('das')">das</button>
+  </div>
+
+  <p id="result"></p>
+  <button onclick="next()">➡️ Avanti</button>
+</div>
+
+<script>
+const words=[
+ {w:"Tisch",a:"der",it:"tavolo"},
+ {w:"Lampe",a:"die",it:"lampada"},
+ {w:"Buch",a:"das",it:"libro"},
+ {w:"Stadt",a:"die",it:"città"},
+ {w:"Haus",a:"das",it:"casa"},
+ {w:"Chef",a:"der",it:"capo"}
+];
+let i=0;
+
+function show(){
+ document.getElementById("word").innerText=words[i].w;
+ document.getElementById("it").innerText=words[i].it;
+ document.getElementById("result").innerText="";
+}
+function check(g){
+ document.getElementById("result").innerText=
+  g===words[i].a ? "✅ Corretto!" : "❌ Era: "+words[i].a;
+}
+function next(){
+ i=(i+1)%words.length;
+ show();
+}
+show();
+</script>
+
+</body>
+</html>
